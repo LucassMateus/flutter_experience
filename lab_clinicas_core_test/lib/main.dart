@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 import 'package:lab_clinicas_core/lab_clinicas_core.dart';
+import 'package:lab_clinicas_core/lab_clinicas_core_config.dart';
 import 'package:lab_clinicas_core_test/home_controller.dart';
+import 'package:asyncstate/asyncstate.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,14 +14,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return LabClinicasCoreConfig(title: 'Lab Clinicas Teste', pagesBuilders: [
+      FlutterGetItPageBuilder(page: (_) => MyHomePage(title: 'Flutter GetIT'), path: '/')
+    ],);
   }
 }
 
@@ -42,8 +40,9 @@ class _MyHomePageState extends State<MyHomePage> with MessagesViewMixin{
     super.initState();
   }
 
-  void _incrementCounter() {
-    controller.fazerAlgo();
+  void _incrementCounter() async {
+    // controller.fazerAlgo();
+    await Future.delayed(const Duration(seconds: 5)).asyncLoader();
     setState(() {
       _counter++;
     });

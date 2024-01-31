@@ -15,7 +15,7 @@ auth:
   urlSkip:
     - /images/:
         method: get
-    - /users/:
+    - /users:
         method: post
-    - /adm_users/:
+    - /adm_users:
         method: post

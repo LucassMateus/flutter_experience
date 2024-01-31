@@ -3,9 +3,21 @@
         {
             "email": "at1@gmail.com",
             "password": "123123"
+        },
+        {
+            "id": "ad480380-d71a-1e8c-af73-c74bf4a674bb",
+            "email": "at2@gmail.com",
+            "password": "123123"
         }
     ],
-    "adm_users": [],
+    "adm_users": [
+        {
+            "id": "52b4fd60-d74c-1e8c-8fa8-af439ed7a9e3",
+            "email": "terminal1@gmail.com",
+            "password": "123123",
+            "admin": true
+        }
+    ],
     "attendantDeskAssignment": [],
     "patients": [],
     "patientInformationForm": [],

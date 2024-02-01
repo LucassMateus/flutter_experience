@@ -12,11 +12,23 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> with MessagesViewMixin {
   final formKey = GlobalKey<FormState>();
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
   final controller = Injector.get<LoginController>();
+
+@override
+  void initState() {
+    messageListener(controller);
+    effect(() {
+      if(controller.logged) {
+        Navigator.of(context).pushReplacementNamed('/home');
+      }
+    });
+
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -67,8 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     const SizedBox(height: 32),
-                    Watch(
-                      (_) {
+                    Watch((_) {
                       return TextFormField(
                         obscureText: controller.obscurePassword,
                         controller: passwordEC,
@@ -76,14 +87,16 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                           label: const Text('Senha'),
                           suffixIcon: IconButton(
-                              onPressed: () {
-                                controller.passwordToggle();
-                              }, icon: const Icon(Icons.visibility)),
+                            onPressed: () {
+                              controller.passwordToggle();
+                            },
+                            icon: controller.obscurePassword
+                                ? const Icon(Icons.visibility)
+                                : const Icon(Icons.visibility_off),
+                          ),
                         ),
                       );
-          
-                      }
-                    ),
+                    }),
                     const SizedBox(height: 32),
                     SizedBox(
                       width: sizeOf.width * .8,
@@ -92,7 +105,10 @@ class _LoginPageState extends State<LoginPage> {
                           onPressed: () {
                             final valid =
                                 formKey.currentState?.validate() ?? false;
-                            if (valid) {}
+                                
+                            if (valid) {
+                              controller.login(emailEC.text, passwordEC.text);
+                            }
                           },
                           child: const Text('Entrar')),
                     )

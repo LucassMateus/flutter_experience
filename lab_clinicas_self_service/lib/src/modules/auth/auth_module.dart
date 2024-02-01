@@ -12,7 +12,7 @@ class AuthModule extends FlutterGetItModule {
       ];
 
   @override
-  String get moduleRouteName => '/Auth';
+  String get moduleRouteName => '/auth';
 
   @override
   Map<String, WidgetBuilder> get pages => {

@@ -45,10 +45,13 @@
             "flutterMode": "release"
         },
         {
-            "name": "lab_clinicas_self_service",
-            "cwd": "lab_clinicas_self_service",
+            "name": "lab_clinicas_self_service DEV",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": [
+                "--dart-define-from-file",
+                ".config/env.json"
+            ]
         },
         {
             "name": "lab_clinicas_self_service (profile mode)",

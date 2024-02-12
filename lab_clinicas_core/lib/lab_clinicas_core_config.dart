@@ -11,13 +11,16 @@ class LabClinicasCoreConfig extends StatelessWidget {
   final List<FlutterGetItPageBuilder>? pagesBuilders;
   final List<FlutterGetItModule>? modules;
   final String title;
+  final VoidCallback? didStart;
 
   const LabClinicasCoreConfig({
+    super.key,
     required this.title,
     this.binding,
     this.pages,
     this.pagesBuilders,
-    this.modules
+    this.modules,
+    this.didStart,
   });
 
   @override
@@ -27,19 +30,26 @@ class LabClinicasCoreConfig extends StatelessWidget {
       bindings: binding,
       pages: [...pages ?? [], ...pagesBuilders ?? []],
       modules: modules,
-      builder: (context, routes, flutterGetItNavObserver){
+      builder: (context, routes, flutterGetItNavObserver) {
         return AsyncStateBuilder(
-          loader: LabClinicasLoader(),
-          builder: (navigatorObserver) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: LabClinicasTheme.lightTheme,
-              darkTheme: LabClinicasTheme.lightTheme,
-              navigatorObservers: [navigatorObserver, flutterGetItNavObserver],
-              routes: routes,
-              title: title,
-      );
-        });
-    },);
+            loader: LabClinicasLoader(),
+            builder: (navigatorObserver) {
+              if (didStart != null) {
+                didStart!();
+              }
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                theme: LabClinicasTheme.lightTheme,
+                darkTheme: LabClinicasTheme.lightTheme,
+                navigatorObservers: [
+                  navigatorObserver,
+                  flutterGetItNavObserver
+                ],
+                routes: routes,
+                title: title,
+              );
+            });
+      },
+    );
   }
 }

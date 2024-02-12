@@ -22,14 +22,31 @@ final class LabClinicasTheme {
         labelStyle: const TextStyle(
           fontSize: 14,
           color: orangeColor,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.bold,
         ),
         floatingLabelStyle:
             const TextStyle(color: blueColor, fontWeight: FontWeight.w600),
+        border: _defaultInputBorder,
         enabledBorder: _defaultInputBorder,
         focusedBorder: _defaultInputBorder,
         errorBorder: _defaultInputBorder.copyWith(
           borderSide: const BorderSide(color: Colors.red),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          backgroundColor: Colors.white,
+          side: const BorderSide(
+            color: blueColor,
+          ),
+          foregroundColor: blueColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          textStyle: const TextStyle(
+            fontSize: 14,
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(

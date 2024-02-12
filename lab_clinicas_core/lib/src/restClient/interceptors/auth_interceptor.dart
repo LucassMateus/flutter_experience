@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 final class AuthInterceptor extends Interceptor{
   
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
 
     final RequestOptions(:headers, :extra) = options;
 
@@ -20,7 +20,7 @@ final class AuthInterceptor extends Interceptor{
       });
     }
     handler.next(options);
-    super.onRequest(options, handler);
+    // onRequest(options, handler);
     
   }
 }

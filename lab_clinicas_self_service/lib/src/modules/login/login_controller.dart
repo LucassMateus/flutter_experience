@@ -1,6 +1,6 @@
 import 'package:asyncstate/asyncstate.dart';
 import 'package:lab_clinicas_core/lab_clinicas_core.dart';
-import 'package:lab_clinicas_self_service_cb/src/services/user_login_service.dart';
+import 'package:lab_clinicas_self_service_cb/src/services/user/user_login_service.dart';
 import 'package:signals_flutter/signals_flutter.dart';
 
 class LoginController with MessageStateMixin{

@@ -1,4 +1,4 @@
-Visão Geral
+Visão Geral:
 O projeto do Fluter Experience coordenado por Rodrigo Rahman é um sistema de gestão para clinicas médicas que abrange três componentes principais:
 
 Aplicação para Android: Uma aplicação voltada para autoatendimento, onde os usuários informam seus pedidos médicos e sua carteirinha.
